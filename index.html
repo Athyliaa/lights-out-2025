@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lights Out 2025 · F1 Season Guide</title>
+  <meta name="description" content="An interactive guide to the 2025 Formula 1 season: how it works, the points, and all ten teams.">
+  <meta name="theme-color" content="#09090b">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <!-- Link previews (chats, socials) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lights Out 2025 · F1 Season Guide">
+  <meta property="og:description" content="The 2025 Formula 1 season, decided by two points. How the sport works, all ten teams, and a start-lights reaction test.">
+  <meta property="og:image" content="https://athyliaa.github.io/lights-out-2025/images/og-image.png">
+  <meta property="og:url" content="https://athyliaa.github.io/lights-out-2025/">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Decide before first paint whether the intro plays (once per session, never with reduced motion) -->
+  <script>
+    (function () {
+      var seen = false;
+      try { seen = sessionStorage.getItem("lo-intro") === "1"; } catch (e) {}
+      var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !reduce) document.documentElement.classList.add("intro-pending");
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-home">
+
+  <!-- ===== Lights-out intro ===== -->
+  <div class="intro" id="intro" role="dialog" aria-label="Intro: start lights">
+    <div class="intro-panel top" aria-hidden="true"></div>
+    <div class="intro-panel bottom" aria-hidden="true"></div>
+    <div class="intro-content">
+      <div class="intro-gantry" aria-hidden="true">
+        <div class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></div>
+        <div class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></div>
+        <div class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></div>
+        <div class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></div>
+        <div class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></div>
+      </div>
+      <p class="intro-status">Formation lap complete</p>
+      <p class="intro-go">It's lights out<span>and away we go</span></p>
+    </div>
+    <button class="intro-skip" type="button">Skip intro <kbd>Esc</kbd></button>
+  </div>
+
+  <header id="site-header"></header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-streaks"></div>
+        <div class="hero-year">2025</div>
+      </div>
+
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Formula 1 World Championship · Season guide</p>
+          <h1 class="hero-title display">
+            <span class="line"><span>Twenty-four races.</span></span>
+            <span class="line"><span>Decided by</span></span>
+            <span class="line"><span class="accent">two points.</span></span>
+          </h1>
+          <p class="hero-lede">
+            Lando Norris beat Max Verstappen to the 2025 title, 423 to 421, at the final round in Abu Dhabi.
+            This is how the sport works, and who was on the grid.
+          </p>
+          <ul class="hero-stats">
+            <li><b data-to="24">24</b><span>Rounds</span></li>
+            <li><b data-to="21">21</b><span>Countries</span></li>
+            <li><b data-to="10">10</b><span>Teams</span></li>
+            <li><b data-to="20">20</b><span>Drivers</span></li>
+          </ul>
+        </div>
+
+        <aside class="tower-wrap" aria-label="Final 2025 Drivers' Championship, top ten">
+          <div class="tower-head">
+            <span>Final classification</span>
+            <span>PTS</span>
+          </div>
+          <ol class="tower" id="tower"></ol>
+        </aside>
+      </div>
+
+      <a class="scroll-cue" href="#about" aria-label="Scroll to the next section"><span></span></a>
+    </section>
+
+    <!-- ===== What is F1 ===== -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="section-num">01</span>
+          <h2 class="section-title display">
+            <span class="line"><span>The fastest circuit</span></span>
+            <span class="line"><span>racing on earth.</span></span>
+          </h2>
+          <p class="section-lede" data-reveal>
+            Formula 1 is the top level of single-seater racing. Ten teams each design and build their own car,
+            run two drivers, and travel the world from March to December. Every Grand Prix pays out points, and at the
+            end of the year there are two titles: one for drivers, one for teams.
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <!-- ===== Race weekend ===== -->
+    <section class="section section-alt" id="weekend">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="section-num">02</span>
+          <h2 class="section-title display">
+            <span class="line"><span>Three days.</span></span>
+            <span class="line"><span>One Sunday that counts.</span></span>
+          </h2>
+          <p class="section-lede" data-reveal>
+            Most rounds follow the standard format. Six of 2025's 24 weekends were Sprint weekends,
+            with less practice and an extra short race on Saturday.
+          </p>
+        </header>
+
+        <div class="format-switch" data-active="standard" role="group" aria-label="Weekend format" data-reveal>
+          <button type="button" data-format="standard" aria-pressed="true">Standard weekend</button>
+          <button type="button" data-format="sprint" aria-pressed="false">Sprint weekend</button>
+          <span class="format-thumb" aria-hidden="true"></span>
+        </div>
+
+        <div class="days" id="weekend-days" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== Points ===== -->
+    <section class="section" id="points">
+      <div class="wrap points-layout">
+        <header class="section-head">
+          <span class="section-num">03</span>
+          <h2 class="section-title display">
+            <span class="line"><span>Every point</span></span>
+            <span class="line"><span>counts.</span></span>
+          </h2>
+          <p class="section-lede" data-reveal>
+            The top ten drivers in every Grand Prix earn points. In 2025, the championship was decided by an
+            incredibly narrow margin, with just two points separating the winner from the runner-up.
+          </p>
+          <div class="points-notes" data-reveal>
+            <div class="note-card">
+              <span class="fact-k">Sprint points · top 8</span>
+              <ol class="sprint-points" id="points-sprint"></ol>
+            </div>
+          </div>
+        </header>
+
+        <div class="points-chart" aria-label="Grand Prix points by finishing position">
+          <div class="points-chart-head">
+            <span>Grand Prix</span><span>Points</span>
+          </div>
+          <ol class="pbars" id="points-race"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Reaction game ===== -->
+    <section class="section section-alt" id="reaction">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="section-num">04</span>
+          <h2 class="section-title display">
+            <span class="line"><span>Beat the lights.</span></span>
+          </h2>
+          <p class="section-lede" data-reveal>
+            Five red lights, then darkness. Hit the pad the instant they go out. An F1 driver reacts in about
+            0.2 seconds. Move before the lights go out and it's a jump start.
+          </p>
+        </header>
+
+        <div class="rt" id="rt" data-state="idle" data-reveal>
+          <button class="rt-pad" id="rt-pad" type="button" aria-describedby="rt-status">
+            <span class="rt-gantry" aria-hidden="true">
+              <span class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></span>
+              <span class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></span>
+              <span class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></span>
+              <span class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></span>
+              <span class="pod"><span class="lamp"><span class="glow"></span></span><span class="lamp"><span class="glow"></span></span></span>
+            </span>
+            <span class="rt-status" id="rt-status" aria-live="polite">Tap here or press Space to start</span>
+            <span class="rt-penalty" aria-hidden="true"><span></span></span>
+          </button>
+
+          <div class="rt-panel">
+            <div class="rt-result">
+              <span class="fact-k rt-label" id="rt-label">Your reaction</span>
+              <p class="rt-readout"><b id="rt-time">0.000</b><small>s</small></p>
+              <p class="rt-verdict" id="rt-verdict">Waiting for your first start.</p>
+            </div>
+
+            <div class="rt-scale" aria-hidden="true">
+              <div class="rt-scale-track">
+                <span class="rt-mark rt-mark-f1" style="--x:0.2"><i></i><em>F1 driver<br>0.200</em></span>
+                <span class="rt-mark rt-mark-you" id="rt-you"><i></i><em>You</em></span>
+              </div>
+              <div class="rt-scale-axis"><span>0.1s</span><span>0.3s</span><span>0.5s+</span></div>
+            </div>
+
+            <dl class="rt-stats">
+              <div><dt>Best</dt><dd id="rt-best">–</dd></div>
+              <div><dt>Average</dt><dd id="rt-avg">–</dd></div>
+              <div><dt>Starts</dt><dd id="rt-count">0</dd></div>
+              <div><dt>Jump starts</dt><dd id="rt-jumps">0</dd></div>
+            </dl>
+
+            <div class="rt-foot">
+              <ol class="rt-log" id="rt-log" aria-label="Last five starts"></ol>
+              <div class="rt-controls">
+                <button class="rt-sound" id="rt-sound" type="button" aria-pressed="false">
+                  <span class="rt-sound-icon" aria-hidden="true"></span><span class="rt-sound-label">Sound off</span>
+                </button>
+                <button class="rt-reset" id="rt-reset" type="button">Reset best</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Pick a team ===== -->
+    <section class="section section-teams" id="teams">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="section-num">05</span>
+          <h2 class="section-title display">
+            <span class="line"><span>Pick a team.</span></span>
+          </h2>
+          <p class="section-lede" data-reveal>
+            All ten teams, in final Constructors' Championship order. Choose one to meet its drivers.
+          </p>
+        </header>
+        <div class="team-grid" id="team-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><b>Lights Out 2025</b> is an unofficial fan project. Not affiliated with Formula 1, the FIA or any team.</p>
+      <p class="footer-meta">Statistics: final standings after the Abu Dhabi Grand Prix, 7 December 2025.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/intro.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/reaction.js"></script>
+</body>
+</html>
